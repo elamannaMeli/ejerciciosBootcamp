@@ -2,55 +2,88 @@ package ejercicio4;
 
 public class Fraccion {
 
-    //int-int
-    public int suma(int a, int b) {
-        return a + b;
+    private int numerador;
+    private int denominador;
+
+    //fraccion
+    public void sumar(Fraccion fraccion) {
+        if(this.denominador == fraccion.getDenominador()) {
+            this.numerador += fraccion.getNumerador();
+        }
+        else {
+            this.numerador = (this.numerador * fraccion.getDenominador()) + (fraccion.getNumerador() * this.getDenominador());
+            this.denominador *= fraccion.getDenominador();
+        }
+        this.mostrarFraccion();
     }
 
-    public int restar(int a, int b) {
-        return a - b;
+    public void restar(Fraccion fraccion) {
+        if(this.denominador == fraccion.getDenominador()) {
+            this.numerador -= fraccion.getNumerador();
+        }
+        else {
+            this.numerador = (this.numerador * fraccion.getDenominador()) - (fraccion.getNumerador() * this.getDenominador());
+            this.denominador *= fraccion.getDenominador();
+        }
+        this.mostrarFraccion();
     }
 
-    public float multiplicar(int a, int b) {
-        return a*b;
+    public void multiplicar(Fraccion fraccion) {
+        this.numerador *= fraccion.getNumerador();
+        this.denominador *= fraccion.getDenominador();
+        this.mostrarFraccion();
     }
 
-    public float dividir(int a, int b) {
-        return a/b;
+    public void dividir(Fraccion fraccion) {
+        int numeradorAux = fraccion.getDenominador();
+        int denominadorAux = fraccion.getNumerador();
+
+        this.numerador *= numeradorAux;
+        this.denominador *= denominadorAux;
+        this.mostrarFraccion();
     }
 
-    //float-int
-    public float suma(float a, int b) {
-        return a + b;
+    //enteros
+    public void sumar(int numero) {
+        this.numerador = this.numerador + (numero * this.getDenominador());
+
+        this.mostrarFraccion();
     }
 
-    public float restar(float a, int b) {
-        return a - b;
+    public void restar(int numero) {
+        this.numerador = this.numerador- (numero * this.getDenominador());
+
+        this.mostrarFraccion();
     }
 
-    public float multiplicar(float a, int b) {
-        return a*b;
+    public void multiplicar(int numero) {
+        this.numerador *= numero;
+        this.mostrarFraccion();
     }
 
-    public float dividir(float a, int b) {
-        return a/b;
+    public void dividir(int numero) {
+        this.denominador *= numero;
+        this.mostrarFraccion();
     }
 
-    //int-float
-    public float suma(int a, float b) {
-        return a + b;
+    public void mostrarFraccion() {
+        System.out.println("Numerador: " + this.numerador);
+        System.out.println("Denominador: " + this.denominador);
     }
 
-    public float restar(int a, float b) {
-        return a - b;
+    public int getNumerador() {
+        return numerador;
     }
 
-    public float multiplicar(int a, float b) {
-        return a*b;
+    public void setNumerador(int numerador) {
+        this.numerador = numerador;
     }
 
-    public float dividir(int a, float b) {
-        return a/b;
+    public int getDenominador() {
+        return denominador;
     }
 
+    public void setDenominador(int denominador) {
+        this.denominador = denominador;
+    }
 }
